@@ -71,10 +71,8 @@ public class Separator {
         }
         i++;
         num = i / x;
-        System.out.println(num);
         if (i % x != 0 ) num++;
         Separator.l(in, num, out, number);
-        System.out.println(num);
     }
     }
 
