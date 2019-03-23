@@ -1,4 +1,5 @@
 
+
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -30,9 +31,6 @@ public class Split {
 
     public static void main(String[] args) throws IOException {
         new Split().start(args);
-
-
-
     }
 
     public void start(String[] args) throws IOException {
@@ -43,7 +41,6 @@ public class Split {
             System.err.println(exc.getMessage());
             System.err.println("java -jar split.jar -d -l|-c|-n num -o basicOutputName inputFileName");
             parse.printUsage(System.err);
-            return;
         }
         if (output == null) output = "x";
         else if (output.equals("-")) output = input;

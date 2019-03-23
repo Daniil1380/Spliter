@@ -6,13 +6,11 @@ public class Separator {
     public static void l(String in, int x, String out, Boolean number) throws IOException {
         int i = 1;
         int namer = 0;
-        File file = new File(in);
-        FileReader read = new FileReader(file);
-        BufferedReader buf = new BufferedReader(read);
+        BufferedReader buf = new BufferedReader(new FileReader(new File(in)));
         String line = buf.readLine();
         String n;
         if (x == 0) throw new IllegalArgumentException();
-        while (line != null) {
+        while (line != null ) {
             if (number) n = out + String.valueOf(namer + 1) + ".txt";
             else n = out + SplitFileType.inChars(namer) + ".txt";
             FileWriter writer = new FileWriter(n);
@@ -34,20 +32,18 @@ public class Separator {
     public static void c(String in, int x, String out, Boolean number) throws IOException {
         int i = 1;
         int namer = 0;
-        File file = new File(in);
-        FileReader read = new FileReader(file);
-        BufferedReader buf = new BufferedReader(read);
-        int line = buf.read();
+        BufferedReader buf = new BufferedReader(new FileReader(new File(in)));
+        int chars = buf.read();
         String n;
         if (x == 0) throw new IllegalArgumentException();
-        while (line != -1) {
+        while (chars != -1) {
             if (number) n = out + String.valueOf(namer + 1) + ".txt";
             else n = out + SplitFileType.inChars(namer) + ".txt";
             FileWriter writer = new FileWriter(n);
-            while (i <= x && line != -1) {
-                writer.write((char)line);
-                line = buf.read();
-                if (line != 13 && line != 10) i++;
+            while (i <= x && chars != -1) {
+                writer.write((char)chars);
+                chars = buf.read();
+                i++;
             }
             i=1;
             writer.close();
@@ -59,21 +55,16 @@ public class Separator {
     public static void n(String in, int x, String out, Boolean number) throws IOException {
         int i = 0;
         int num = 0;
-        File file = new File(in);
-        FileReader read = new FileReader(file);
-        BufferedReader buf = new BufferedReader(read);
-        int line = buf.read();
+        BufferedReader buf = new BufferedReader(new FileReader(new File(in)));
+        int chars = buf.read();
         String n;
         if (x == 0) throw new IllegalArgumentException();
-        while (line != -1) {
-            if (line == 10) i++;
-            line = buf.read();
+        while (chars != -1) {
+            i++;
+            chars = buf.read();
         }
-        i++;
         num = i / x;
         if (i % x != 0 ) num++;
-        Separator.l(in, num, out, number);
+        Separator.c(in, num, out, number);
     }
     }
-
-

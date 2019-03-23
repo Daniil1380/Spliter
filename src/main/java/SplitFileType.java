@@ -3,7 +3,7 @@ public class SplitFileType {
         StringBuilder str = new StringBuilder();
         if (n < 0) throw new IllegalArgumentException();
         do {
-            str.append((char)(n % 26 + 97));
+            str.append((char)(n % 26 + (int)'a'));
             n /= 26;
         } while (n > 0);
         return str.reverse().toString();
